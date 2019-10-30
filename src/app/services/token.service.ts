@@ -5,18 +5,17 @@ import { CookieService } from 'ngx-cookie-service';
   providedIn: 'root'
 })
 export class TokenService {
+  constructor(private cookieService: CookieService) {}
 
-  constructor(private cookieService:CookieService) { }
-
-  setToken(token: string){
+  setToken(token) {
     this.cookieService.set('yaca_token', token);
   }
 
-  getToken(){
-    this.cookieService.get('yaca_token');
+  getToken() {
+    return this.cookieService.get('yaca_token');
   }
 
-  deleteToken(){
+  deleteToken() {
     this.cookieService.delete('yaca_token');
   }
 }
