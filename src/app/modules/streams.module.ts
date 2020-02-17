@@ -9,9 +9,15 @@ import { PostsComponent } from '../components/posts/posts.component';
 import { PostService } from 'app/services/post.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { UsersComponent } from 'app/components/users/users.component';
+import { MessageComponent } from 'app/components/message/message.component';
+import { MessageListComponent } from 'app/components/message-list/message-list.component';
 
 @NgModule({
-  declarations: [StreamsComponent, ToolbarComponent, SideComponent, PostFormComponent, PostsComponent],
+  declarations: [
+    StreamsComponent, ToolbarComponent, SideComponent, PostFormComponent, PostsComponent,
+    UsersComponent, MessageListComponent, MessageComponent
+  ],
   exports: [StreamsComponent, ToolbarComponent],
   imports: [CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule],
   providers: [TokenService, PostService]

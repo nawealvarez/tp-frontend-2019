@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'app/models';
+import { UserService } from 'app/services/user.service';
 
 @Component({
   selector: 'app-side',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideComponent implements OnInit {
 
-  constructor() { }
+  private _users: User[];
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
+    this.userService.getAllUsers()
+      .subscribe((users: User[]) => this._users=users);
   }
+
+  
+  public get users() : User[] {
+    return this._users
+  }
+  
 
 }

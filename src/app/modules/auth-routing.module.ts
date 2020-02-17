@@ -4,7 +4,7 @@ import { AuthTabsComponent } from '../components/auth-tabs/auth-tabs.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'auth',
     component: AuthTabsComponent
   }
 ];

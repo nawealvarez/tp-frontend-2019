@@ -1,11 +1,4 @@
-a {
-  color: black;
-}
-
-.active a {
-  color: #ffffff !important;
-}
-
-.active {
-  background-color: #64b5f6 !important;
+ul {
+  border-right: 1px solid lightgray;
+  height: 100%;
 }

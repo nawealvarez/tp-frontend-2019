@@ -8,6 +8,11 @@ const routes: Routes = [
     path: 'streams',
     component: StreamsComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'streams/:id',
+    component: StreamsComponent,
+    canActivate: [AuthGuard]
   }
 ];
 

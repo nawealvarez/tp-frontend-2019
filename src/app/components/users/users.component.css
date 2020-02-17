@@ -1,0 +1,7 @@
+div {
+    padding: 20px;
+}
+
+div:hover {
+    background-color: lightgray;
+}

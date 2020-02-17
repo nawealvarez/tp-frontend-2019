@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
         this.tokenService.setToken(data.token);
         this.loginForm.reset();
         setTimeout(() => {
-          this.router.navigate(['streams']);
+          this.router.navigate(['streams', 0]);
         }, 3000);
       },
       err => {

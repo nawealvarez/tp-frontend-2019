@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Optional } from '@angular/core';
 import { TokenService } from 'app/services/token.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { User } from 'app/models';
+import { UserService } from 'app/services/user.service';
 
 @Component({
   selector: 'app-streams',
@@ -10,12 +14,28 @@ import { Router } from '@angular/router';
 export class StreamsComponent implements OnInit {
   token: any;
 
-  constructor(private tokenService: TokenService, private router: Router) { }
+  user$: User;
+  constructor(
+    private tokenService: TokenService, 
+    private route: ActivatedRoute,
+    private userService: UserService
+  ) { }
 
   ngOnInit() {
     this.token = this.tokenService.getToken();
-    console.log(this.token);
+    this.route.paramMap.subscribe(
+      (params) => {
+        const user_id = params.get('id');
+        console.log(user_id)
+        if(!user_id){
+          return
+        }
+        this.userService.getUser(user_id).subscribe(
+          (user) => {
+            this.user$ = user;
+          }
+        )
+      }
+    )
   }
-
-
 }
