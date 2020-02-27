@@ -14,7 +14,7 @@ import { UserService } from 'app/services/user.service';
 export class StreamsComponent implements OnInit {
   token: any;
 
-  user$: User;
+  user$: User = null;
   constructor(
     private tokenService: TokenService, 
     private route: ActivatedRoute,
@@ -38,4 +38,10 @@ export class StreamsComponent implements OnInit {
       }
     )
   }
+
+  
+  public get user() : User {
+    return this.user$;
+  }
+  
 }

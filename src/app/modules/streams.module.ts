@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UsersComponent } from 'app/components/users/users.component';
 import { MessageComponent } from 'app/components/message/message.component';
 import { MessageListComponent } from 'app/components/message-list/message-list.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { MessageListComponent } from 'app/components/message-list/message-list.c
     UsersComponent, MessageListComponent, MessageComponent
   ],
   exports: [StreamsComponent, ToolbarComponent],
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule, RouterModule],
   providers: [TokenService, PostService]
 })
 export class StreamsModule {}

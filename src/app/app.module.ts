@@ -7,6 +7,7 @@ import { AuthModule } from './modules/auth.module';
 import { StreamsModule } from './modules/streams.module';
 import { StreamsRoutingModule } from './modules/streams-routing.module';
 import { CookieService } from 'ngx-cookie-service';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [AppComponent],
