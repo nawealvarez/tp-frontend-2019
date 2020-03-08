@@ -22,21 +22,6 @@ export class MessageListComponent implements OnInit {
   ngOnInit() {
     this.messageService.getAllByUser(this.user)
       .subscribe((data) => this.messages=data.messages)
-
-      
   }
-  
-  //ngOnInit() {
-  //  this.msgInit();
-  //  this.id = setInterval(() => {
-  //    this.msgInit(); 
-  //  }, 5000);
-  //}
-  
-  //ngOnDestroy() {
-  //  if (this.id) {
-  //    clearInterval(this.id);
-  //  }
- // }
 
 }
