@@ -14,6 +14,6 @@ export class ToolbarComponent implements OnInit {
 
   logout() {
     this.tokenService.deleteToken();
-    this.router.navigate(['']);
+    this.router.navigate(['auth']);
   }
 }

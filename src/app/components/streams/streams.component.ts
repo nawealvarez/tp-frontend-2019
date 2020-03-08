@@ -5,6 +5,7 @@ import { switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { User } from 'app/models';
 import { UserService } from 'app/services/user.service';
+import { WebsocketService } from 'app/services/websocket.service';
 
 @Component({
   selector: 'app-streams',
@@ -18,7 +19,8 @@ export class StreamsComponent implements OnInit {
   constructor(
     private tokenService: TokenService, 
     private route: ActivatedRoute,
-    private userService: UserService
+    private userService: UserService,
+    private websocketService: WebsocketService
   ) { }
 
   ngOnInit() {
@@ -34,9 +36,12 @@ export class StreamsComponent implements OnInit {
           (user) => {
             this.user$ = user;
           }
-        )
+        );
       }
-    )
+    );
+    this.websocketService.listen('test event').subscribe((data) =>{
+      console.log(data);
+    });
   }
 
   
