@@ -10,14 +10,18 @@ import { PostService } from 'app/services/post.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { UsersComponent } from 'app/components/users/users.component';
-import { MessageComponent } from 'app/components/message/message.component';
 import { MessageListComponent } from 'app/components/message-list/message-list.component';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
-    StreamsComponent, ToolbarComponent, SideComponent, PostFormComponent, PostsComponent,
-    UsersComponent, MessageListComponent, MessageComponent
+    StreamsComponent,
+    ToolbarComponent,
+    SideComponent,
+    PostFormComponent,
+    PostsComponent,
+    UsersComponent,
+    MessageListComponent
   ],
   exports: [StreamsComponent, ToolbarComponent],
   imports: [CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule, RouterModule],
