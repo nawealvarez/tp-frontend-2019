@@ -10,7 +10,7 @@ import { UserMessages } from 'app/models/usermessages';
   providedIn: 'root'
 })
 export class UserService {
-
+  public userName: string = null;
   constructor(
     private http: HttpClient,
     private tokenService: TokenService
@@ -25,8 +25,18 @@ export class UserService {
   }
 
   getMe(): Observable<User> {
-    return this.http.get<User>(`${environment.apiURL}/user/me`);
+    return this.http.get<User>(`${environment.apiURL}/user/me`,{
+      headers: new HttpHeaders({
+        'Authorization':  `Bearer ${this.tokenService.getToken()}`
+      })
+    });
   }
+  /*getUserName(): string {
+		if (this.userName === null) {
+			this.userName = localStorage.getItem('username');
+		}
+		return this.userName;
+	}*/
 
   getUser(id: string): Observable<UserMessages> {
     return this.http.get<UserMessages>(`${environment.apiURL}/user/${id}`, {

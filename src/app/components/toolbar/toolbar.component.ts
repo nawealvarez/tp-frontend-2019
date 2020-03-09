@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { TokenService } from 'app/services/token.service';
+import { User } from 'app/models';
+import { UserService } from 'app/services/user.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -8,9 +10,16 @@ import { TokenService } from 'app/services/token.service';
   styleUrls: ['./toolbar.component.css']
 })
 export class ToolbarComponent implements OnInit {
-  constructor(private tokenService: TokenService, private router: Router) {}
+  private _user: User;
+  constructor(private tokenService: TokenService, private router: Router, private userService: UserService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.userService.getMe().subscribe((user: User) => (this._user = user));
+  }
+
+  public get user() : User {
+    return this._user
+  }
 
   logout() {
     this.tokenService.deleteToken();

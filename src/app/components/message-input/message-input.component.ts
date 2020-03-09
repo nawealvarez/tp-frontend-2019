@@ -11,7 +11,7 @@ export class MessageInputComponent implements OnInit {
   @Input()
   user: User;
   content: String;
-  status: String
+  status: String;
   constructor(
     private messageService: MessageService
   ) { 
