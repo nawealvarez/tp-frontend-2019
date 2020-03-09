@@ -1,4 +1,5 @@
 ul {
   border-right: 1px solid lightgray;
   height: 100%;
+  overflow-y: auto;
 }

@@ -1,4 +1,25 @@
-.yaca-contaner {
+.streams {
     display: flex;
-    flex-direction: ro;
+    flex-direction: column;
+}
+
+.sarasa {
+    display: flex;
+    flex-direction: row;
+    height: 81vh;
+}
+
+.messages {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column-reverse;
+    width: 100%;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    overflow-x: auto;
 }

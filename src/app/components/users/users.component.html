@@ -1,5 +1,5 @@
-<a [routerLink]="['/streams', user._id]">
-  <div id="{{user._id}}">
+<a [routerLink]="['/streams', user._id]" >
+  <div id="{{user._id}}" [ngClass]="selected ? 'selected': ''">
     {{user.username}}
   </div> 
 </a>

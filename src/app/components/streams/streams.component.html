@@ -1,15 +1,17 @@
-<app-toolbar></app-toolbar>
-<div class="container" style="margin-top: 30px">
-  <div class="row">
-    <div class="col s12 m4 l3">
-      <app-side></app-side>
+<div class="streams">
+  <div class="toolbar">
+    <app-toolbar></app-toolbar>
+  </div>
+  <div class="sarasa">
+    <div class="side-bar">
+      <app-side [selectedUser]='userMessages.user'></app-side>
     </div>
-    <div class="col s12 m8 l9" *ngIf="userMessages">
-      <div class="row" >
-        <app-message-list [userMessages]="userMessages"></app-message-list>
-      </div>
-      <div class="row">
+    <div class="messages" *ngIf="userMessages">
+      <div class="messages-input">
         <app-message-input [user]='this.userMessages.user'></app-message-input>
+      </div>
+      <div class="messages-list" >
+        <app-message-list [userMessages]="userMessages"></app-message-list>
       </div>
     </div>
   </div>

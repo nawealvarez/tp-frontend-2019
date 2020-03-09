@@ -5,3 +5,9 @@ div {
 div:hover {
     background-color: lightgray;
 }
+
+.selected {
+    background-color: #64b5f6;
+    color: white;
+    font-weight: 500;
+}

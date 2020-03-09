@@ -11,7 +11,8 @@ export class UsersComponent implements OnInit {
 
   @Input()
   user: User;
-  
+  @Input()
+  selected: Boolean;
   constructor() { }
 
   ngOnInit() {

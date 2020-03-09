@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { User } from 'app/models';
 import { UserService } from 'app/services/user.service';
 
@@ -8,7 +8,8 @@ import { UserService } from 'app/services/user.service';
   styleUrls: ['./side.component.css']
 })
 export class SideComponent implements OnInit {
-
+  @Input()
+  selectedUser: User;
   private _users: User[];
   constructor(private userService: UserService) { }
 
