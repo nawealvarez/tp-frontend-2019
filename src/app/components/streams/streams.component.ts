@@ -28,8 +28,8 @@ export class StreamsComponent implements OnInit, OnDestroy {
     this.route.paramMap.subscribe(
       (params) => {
         const user_id = params.get('id');
-        if(!user_id){
-          return
+        if (!user_id){
+          console.log(`Error ${user_id}`);
         }
         if(this.polling) {
           this.polling.unsubscribe();

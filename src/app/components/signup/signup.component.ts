@@ -39,8 +39,8 @@ export class SignupComponent implements OnInit {
         this.tokenService.setToken(data.token);
         this.signupForm.reset();
         setTimeout(() => {
-          this.router.navigate(['streams',0]);
-        }, 3000);
+          this.router.navigate(['streams']);
+        }, 1000);
       },
       err => {
         this.showSpinner = false;
