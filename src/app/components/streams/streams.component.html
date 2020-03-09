@@ -4,14 +4,17 @@
   </div>
   <div class="sarasa">
     <div class="side-bar">
-      <app-side [selectedUser]='userMessages.user'></app-side>
+      <app-side [selectedUser]='userMessages ? userMessages.user : ""'></app-side>
     </div>
-    <div class="messages" *ngIf="userMessages">
-      <div class="messages-input">
-        <app-message-input [user]='this.userMessages.user'></app-message-input>
-      </div>
-      <div class="messages-list" >
-        <app-message-list [userMessages]="userMessages"></app-message-list>
+    <div class="messages-container" *ngIf="userMessages">
+      <app-message-badge [user]="userMessages.user"></app-message-badge>
+      <div class="messages" >
+        <div class="messages-input">
+          <app-message-input [user]='this.userMessages.user'></app-message-input>
+        </div>
+        <div class="messages-list" >
+          <app-message-list [userMessages]="userMessages"></app-message-list>
+        </div>
       </div>
     </div>
   </div>

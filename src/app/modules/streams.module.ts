@@ -12,11 +12,12 @@ import { MessageComponent } from 'app/components/message/message.component';
 import { MessageListComponent } from 'app/components/message-list/message-list.component';
 import { RouterModule } from '@angular/router';
 import { MessageInputComponent } from 'app/components/message-input/message-input.component';
+import { MessageBadgeComponent } from 'app/components/message-badge/message-badge.component';
 
 @NgModule({
   declarations: [
     StreamsComponent, ToolbarComponent, SideComponent, UsersComponent,
-    MessageListComponent, MessageComponent, MessageInputComponent
+    MessageListComponent, MessageComponent, MessageInputComponent, MessageBadgeComponent
   ],
   exports: [StreamsComponent, ToolbarComponent],
   imports: [CommonModule,FormsModule, HttpClientModule, RouterModule],

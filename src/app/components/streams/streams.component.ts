@@ -14,7 +14,6 @@ import { UserMessages } from 'app/models/usermessages';
 })
 export class StreamsComponent implements OnInit, OnDestroy {
   token: any;
-
   polling: Subscription;
   _userMessages: UserMessages = null;
   constructor(
