@@ -14,14 +14,14 @@ import { UserMessages } from 'app/models/usermessages';
 })
 
 export class MessageService {
-
-
+  
+  
   constructor(
     private http: HttpClient,
     private tokenService: TokenService,
     private userService: UserService
-  ) { }
-  
+    ) { }
+    
   getAll() {
     return this.http.get<Message>(`${environment.apiURL}/api/messages`, {
       headers: new HttpHeaders({
@@ -36,5 +36,16 @@ export class MessageService {
         'Authorization': `Bearer ${this.tokenService.getToken()}`
       })
     });
+  }
+  
+  createMessage(content: String, receptor: User) {
+      return this.http.post(
+        `${environment.apiURL}/api/message/`,
+        {'receptor': receptor._id, 'content': content},
+        {
+        headers: new HttpHeaders({
+          'Authorization': `Bearer ${this.tokenService.getToken()}`
+        })
+      })
   }
 }

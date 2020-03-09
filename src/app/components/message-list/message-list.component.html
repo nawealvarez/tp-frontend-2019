@@ -1,1 +1,6 @@
-<p>message-list works!</p>
+
+<ul *ngIf='messages()'>
+  <li *ngFor='let message of messages();'>
+    <app-message [message]="message"></app-message>
+  </li>
+</ul>

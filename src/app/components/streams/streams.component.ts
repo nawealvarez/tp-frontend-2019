@@ -1,20 +1,22 @@
-import { Component, OnInit, Optional } from '@angular/core';
+import { Component, OnInit, Optional, OnDestroy } from '@angular/core';
 import { TokenService } from 'app/services/token.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { switchMap, startWith } from 'rxjs/operators';
+import { Observable, interval, Subscription } from 'rxjs';
 import { User } from 'app/models';
 import { UserService } from 'app/services/user.service';
+import { UserMessages } from 'app/models/usermessages';
 
 @Component({
   selector: 'app-streams',
   templateUrl: './streams.component.html',
   styleUrls: ['./streams.component.css']
 })
-export class StreamsComponent implements OnInit {
+export class StreamsComponent implements OnInit, OnDestroy {
   token: any;
 
-  user$: User = null;
+  polling: Subscription;
+  _userMessages: UserMessages = null;
   constructor(
     private tokenService: TokenService, 
     private route: ActivatedRoute,
@@ -26,22 +28,30 @@ export class StreamsComponent implements OnInit {
     this.route.paramMap.subscribe(
       (params) => {
         const user_id = params.get('id');
-        console.log(user_id)
         if(!user_id){
           return
         }
-        this.userService.getUser(user_id).subscribe(
+        if(this.polling) {
+          this.polling.unsubscribe();
+        }
+        this.polling = interval(500).pipe(
+          startWith(0),
+          switchMap(() => this.userService.getUser(user_id))
+        ).subscribe(
           (user) => {
-            this.user$ = user;
+            this._userMessages = user;
           }
         )
       }
     )
-  }
+  } 
 
+  ngOnDestroy() {
+    this.polling.unsubscribe();
+  }
   
-  public get user() : User {
-    return this.user$;
+  public get userMessages() : UserMessages {
+    return this._userMessages;
   }
   
 }

@@ -4,9 +4,13 @@
     <div class="col s12 m4 l3">
       <app-side></app-side>
     </div>
-
-    <div class="col s12 m8 l9" *ngIf="user">
-      <app-message-list [user]="user"></app-message-list>
+    <div class="col s12 m8 l9" *ngIf="userMessages">
+      <div class="row" >
+        <app-message-list [userMessages]="userMessages"></app-message-list>
+      </div>
+      <div class="row">
+        <app-message-input [user]='this.userMessages.user'></app-message-input>
+      </div>
     </div>
   </div>
 </div>

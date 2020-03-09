@@ -5,15 +5,15 @@ import { AuthGuard } from 'app/services/auth.guard';
 
 const routes: Routes = [
   {
-    path: 'streams',
+    path: 'streams/:id',
     component: StreamsComponent,
     canActivate: [AuthGuard]
   },
   {
-    path: 'streams/:id',
+    path: 'streams',
     component: StreamsComponent,
     canActivate: [AuthGuard]
-  }
+  },
 ];
 
 @NgModule({

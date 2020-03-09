@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { User, Message } from 'app/models';
 import { MessageService } from 'app/services/message.service';
 import { UserService } from 'app/services/user.service';
+import { UserMessages } from 'app/models/usermessages';
 
 @Component({
   selector: 'app-message-list',
@@ -11,17 +12,20 @@ import { UserService } from 'app/services/user.service';
 export class MessageListComponent implements OnInit {
 
   @Input()
-  user: User;
-  messages: Message[];
+  userMessages: UserMessages;
 
   constructor(
     private messageService: MessageService,
     private userService: UserService
   ) { }
 
-  ngOnInit() {
-    this.messageService.getAllByUser(this.user)
-      .subscribe((data) => this.messages=data.messages)
+  ngOnInit() {}
+
+  ngOnChanges() {
+    
   }
 
+  messages(): Message[] {
+    return this.userMessages.messages;
+  }
 }
