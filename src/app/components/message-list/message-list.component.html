@@ -1,10 +1,17 @@
 <ul class="chat" *ngIf='messages()'>
-  <!--
-    IMPLEMENTAR
-    <div [ngClass]="{'chat__bubble chat__bubble--sent': message.emiter == user._id, 'chat__bubble chat__bubble--rcvd chat__bubble--stop':message.emiter != user._id}">-->
+  
   <li *ngFor='let message of messages();'>
-    <div class="chat__bubble chat__bubble--rcvd chat__bubble--stop">
+    <div *ngIf="message.emiter === _user._id; else notUser" class="emitter">
       <app-message [message]="message"></app-message>
     </div>
+    
+    <ng-template #notUser>
+      <div class="receiver">
+        <app-message [message]="message"></app-message>
+      </div>
+    </ng-template>
+
+    <div class="clear"></div>
   </li>
 </ul>
+
