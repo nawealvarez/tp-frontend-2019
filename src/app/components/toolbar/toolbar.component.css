@@ -1,3 +1,4 @@
 .username {
-	float: right;
+	float: left;
+	padding-right: 30%;
 }

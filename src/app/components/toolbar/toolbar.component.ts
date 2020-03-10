@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { TokenService } from 'app/services/token.service';
 import { User } from 'app/models';
-import { UserService } from 'app/services/user.service';
+import { AuthService } from 'app/services/auth.service';
+
 
 @Component({
   selector: 'app-toolbar',
@@ -11,10 +12,10 @@ import { UserService } from 'app/services/user.service';
 })
 export class ToolbarComponent implements OnInit {
   private _user: User;
-  constructor(private tokenService: TokenService, private router: Router, private userService: UserService) {}
+  constructor(private tokenService: TokenService, private router: Router, private authService: AuthService) {}
 
   ngOnInit() {
-    this.userService.getMe().subscribe((user: User) => (this._user = user));
+    this._user = this.authService.getCurrentUser();
   }
 
   public get user() : User {
