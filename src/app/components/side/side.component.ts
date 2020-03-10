@@ -16,25 +16,25 @@ export class SideComponent implements OnInit {
   constructor(private authService: AuthService, private userService: UserService) {}
 
   ngOnInit() {
-    this.userService.getAllUsers().subscribe((users: User[]) => (this._users = users));
-
     this.currentUser = this.authService.getCurrentUser();
-    if (!this.currentUser){
-      console.log(`Error en side ${this.currentUser}`);
-    }else{console.log(`el current user es ${this.currentUser}`);}
+    this.userService.getAllUsers().subscribe((users: User[]) => {
+      if (users.length > 0){
+        for (var i=0; i<users.length; i++){
+          if (users[i]["username"] == this.currentUser.username){
+            users.splice(i,1);
+            this._users=users;
+          }
+        }
+      }
+    }
+    )
   }
 
   public get users(): User[] {
-   /* for (var i =0; i<this._users.length; i++){
-      if (this._users[i]["username"] == this.currentUser.username){
-        this._users.splice(i,1);
-        return this._users;
-      }
-    }*/
    return this._users;
   }
 
-  public get current(): User {
+  /*public get current(): User {
     return this.currentUser;
-  }
+  }*/
 }
