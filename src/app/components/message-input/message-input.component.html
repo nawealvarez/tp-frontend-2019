@@ -1,7 +1,9 @@
 <form #messageForm='ngForm' (ngSubmit)='onSubmit()'>
   <label for="content">
-    Mensaje: 
+    Mensaje:
     <input name="content" [(ngModel)]='content' autocomplete="off">
   </label>
-  <button type="submit">Enviar</button>
+  <button class="btn waves-effect waves-light" type="submit" name="action">Enviar
+    <i class="material-icons right">send</i>
+  </button>
 </form>

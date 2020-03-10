@@ -31,12 +31,10 @@ export class UserService {
       })
     });
   }
-  /*getUserName(): string {
-		if (this.userName === null) {
-			this.userName = localStorage.getItem('username');
-		}
-		return this.userName;
-	}*/
+  getLoggedInUser() {
+    return JSON.parse(localStorage.getItem('user'));
+  }
+
 
   getUser(id: string): Observable<UserMessages> {
     return this.http.get<UserMessages>(`${environment.apiURL}/user/${id}`, {

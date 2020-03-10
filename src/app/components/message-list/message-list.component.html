@@ -1,5 +1,8 @@
 <ul class="chat" *ngIf='messages()'>
-  <li class="chat__bubble chat__bubble--rcvd chat__bubble--stop" *ngFor='let message of messages();'>
-    <app-message [message]="message"></app-message>
+  <!--[ngClass]="{'chat__bubble chat__bubble--sent': message.emiter == userService.getLoggedInUser()._id}"-->
+  <li *ngFor='let message of messages();'>
+    <div class="chat__bubble chat__bubble--rcvd chat__bubble--stop">
+      <app-message [message]="message"></app-message>
+    </div>
   </li>
 </ul>
