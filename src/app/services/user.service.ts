@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'environments/environment';
-import { User } from 'app/models';
 import { Observable } from 'rxjs';
 import { TokenService } from './token.service';
 import { UserMessages } from 'app/models/usermessages';
+import {User} from 'app/models/user';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  public userName: string = null;
   constructor(
     private http: HttpClient,
     private tokenService: TokenService
@@ -30,9 +30,6 @@ export class UserService {
         'Authorization':  `Bearer ${this.tokenService.getToken()}`
       })
     });
-  }
-  getLoggedInUser() {
-    return JSON.parse(localStorage.getItem('user'));
   }
 
 

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { User } from 'app/models';
+import { AuthService } from 'app/services/auth.service';
 import { UserService } from 'app/services/user.service';
 
 @Component({
@@ -12,12 +13,12 @@ export class SideComponent implements OnInit {
   selectedUser: User;
   currentUser: User;
   private _users: User[];
-  constructor(private userService: UserService) {}
+  constructor(private authService: AuthService, private userService: UserService) {}
 
   ngOnInit() {
     this.userService.getAllUsers().subscribe((users: User[]) => (this._users = users));
 
-    this.userService.getMe().subscribe((current: User) => (this.currentUser = current));
+    this.currentUser = this.authService.getCurrentUser();
     if (!this.currentUser){
       console.log(`Error en side ${this.currentUser}`);
     }else{console.log(`el current user es ${this.currentUser}`);}
