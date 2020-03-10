@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { MessageService } from 'app/services/message.service';
 import { UserService } from 'app/services/user.service';
 import { UserMessages } from 'app/models/usermessages';
+import { AuthService} from 'app/services/auth.service';
 
 @Component({
   selector: 'app-message-list',
@@ -11,7 +12,7 @@ import { UserMessages } from 'app/models/usermessages';
   styleUrls: ['./message-list.component.css']
 })
 export class MessageListComponent implements OnInit {
-  private user: String;
+  private _user: User;
 
   @Input()
   userMessages: UserMessages;
@@ -20,10 +21,16 @@ export class MessageListComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private messageService: MessageService,
-    private userService: UserService
+    private userService: UserService,
+    private authService: AuthService
   ) { }
 
-  ngOnInit() {
+ ngOnInit() {
+    this._user = this.authService.getCurrentUser();
+  }
+
+  public get user() : User {
+    return this._user
   }
 
   ngOnChanges() {
