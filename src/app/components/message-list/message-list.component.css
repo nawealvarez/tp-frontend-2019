@@ -44,6 +44,7 @@
     color: white;
     background: #0b93f6;
     border-radius: 25px;
+    margin-bottom: 5px;
     float: right;
 }
 
@@ -75,6 +76,7 @@
 .receiver {
     position: relative;
     left: 3em;
+    margin-bottom: 5px;
     padding: 10px 20px;
     background: #e5e5ea;
     border-radius: 25px;
