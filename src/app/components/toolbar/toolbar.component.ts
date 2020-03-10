@@ -22,6 +22,7 @@ export class ToolbarComponent implements OnInit {
   }
 
   logout() {
+    localStorage.removeItem("currentUser");
     this.tokenService.deleteToken();
     this.router.navigate(['']);
   }

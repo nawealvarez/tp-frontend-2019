@@ -25,7 +25,13 @@ export class SideComponent implements OnInit {
   }
 
   public get users(): User[] {
-    return this._users;
+   /* for (var i =0; i<this._users.length; i++){
+      if (this._users[i]["username"] == this.currentUser.username){
+        this._users.splice(i,1);
+        return this._users;
+      }
+    }*/
+   return this._users;
   }
 
   public get current(): User {
