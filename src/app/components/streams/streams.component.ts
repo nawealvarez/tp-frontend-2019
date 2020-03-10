@@ -26,7 +26,7 @@ export class StreamsComponent implements OnInit, OnDestroy {
     this.token = this.tokenService.getToken();
     this.route.paramMap.subscribe(
       (params) => { 
-        const user_id = params.get('_id');
+        const user_id = params.get('id');
         if (!user_id){
           console.log(`Error streams ${user_id}`);
         }
