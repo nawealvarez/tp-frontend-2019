@@ -1,6 +1,5 @@
-
-<ul *ngIf='messages()'>
-  <li *ngFor='let message of messages();'>
+<ul class="chat" *ngIf='messages()'>
+  <li class="chat__bubble chat__bubble--rcvd chat__bubble--stop" *ngFor='let message of messages();'>
     <app-message [message]="message"></app-message>
   </li>
 </ul>

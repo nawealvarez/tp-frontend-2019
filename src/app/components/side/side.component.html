@@ -1,4 +1,4 @@
-<ul>
+<ul class="user-list">
   <li *ngFor='let user of users;'>
     <app-users [user]="user" [selected]='selectedUser._id == user._id '></app-users>
   </li>

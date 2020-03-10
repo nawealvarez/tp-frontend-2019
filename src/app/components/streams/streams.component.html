@@ -8,11 +8,11 @@
     </div>
     <div class="messages-container" *ngIf="userMessages">
       <app-message-badge [user]="userMessages.user"></app-message-badge>
-      <div class="messages" >
+      <div class="messages">
         <div class="messages-input">
           <app-message-input [user]='this.userMessages.user'></app-message-input>
         </div>
-        <div class="messages-list" >
+        <div class="messages-list">
           <app-message-list [userMessages]="userMessages"></app-message-list>
         </div>
       </div>
